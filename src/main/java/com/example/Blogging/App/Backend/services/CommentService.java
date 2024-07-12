@@ -11,9 +11,15 @@ public interface CommentService {
 
     List<CommentEntity> getAllCommentsByBlogId(Integer blogId) throws Exception;
 
+    List<CommentEntity> getAllCommentsByUserId(Integer userId);
+
     List<CommentEntity> getAllComments();
 
     CommentEntity addCommentOnBlog(CommentEntity comment, Integer blogId, Integer userId) throws Exception;
 
     Boolean likeAComment(Integer commentId, Integer userId) throws Exception;
+
+    Boolean deleteComment(Integer commentId) throws Exception;
+
+    CommentEntity updateComment(Integer commentId, String comment) throws Exception;
 }

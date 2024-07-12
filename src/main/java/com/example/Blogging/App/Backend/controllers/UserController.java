@@ -32,4 +32,14 @@ public class UserController {
     public Boolean followUser(@PathVariable Integer userId1, @PathVariable Integer userId2) throws Exception {
         return userService.followUser(userId1, userId2);
     }
+
+    @DeleteMapping("/delete/{userId}")
+    public Boolean deleteUser(@PathVariable Integer userId) throws Exception {
+        return userService.deleteUser(userId);
+    }
+
+    @PutMapping("/update/{userId}")
+    public UserEntity updateUser(@PathVariable Integer userId, @RequestBody UserEntity user) throws Exception {
+        return userService.updateUser(userId, user);
+    }
 }

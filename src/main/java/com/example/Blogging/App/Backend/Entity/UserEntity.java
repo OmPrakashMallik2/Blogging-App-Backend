@@ -20,6 +20,8 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
     private String name;
+    private String email;
+    private String password;
     private String bio;
     private List<Integer> blogs = new ArrayList<>();
     private List<Integer> followers = new ArrayList<>();

@@ -43,6 +43,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public List<CommentEntity> getAllCommentsByUserId(Integer userId) {
+        return commentRepository.findByUserId(userId);
+    }
+
+    @Override
     public List<CommentEntity> getAllComments() {
         return commentRepository.findAll();
     }
@@ -75,5 +80,29 @@ public class CommentServiceImpl implements CommentService {
         comment.setLikes(likes);
         commentRepository.save(comment);
         return true;
+    }
+
+    @Override
+    public Boolean deleteComment(Integer commentId) throws Exception {
+        CommentEntity foundComment = getCommentById(commentId);
+        BlogEntity blog = blogService.getBlogById(foundComment.getBlogId());
+        List<Integer> comments = blog.getComments();
+        comments.remove(commentId);
+        blog.setComments(comments);
+        blogRepository.save(blog);
+        commentRepository.delete(foundComment);
+        return true;
+    }
+
+    @Override
+    public CommentEntity updateComment(Integer commentId, String comment) throws Exception {
+        CommentEntity foundComment = getCommentById(commentId);
+        if (!comment.isEmpty()) {
+            foundComment.setComment(comment);
+            commentRepository.save(foundComment);
+        } else {
+            throw new Exception("Comment cant be empty");
+        }
+        return foundComment;
     }
 }

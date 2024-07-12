@@ -38,4 +38,14 @@ public class CommentController {
         return commentService.likeAComment(commentId, userId);
     }
 
+    @DeleteMapping("/{commentId}")
+    public Boolean deleteComment(@PathVariable Integer commentId) throws Exception {
+        return commentService.deleteComment(commentId);
+    }
+
+    @PutMapping("/{commentId}")
+    public CommentEntity updateComment(@PathVariable Integer commentId, @RequestBody String comment) throws Exception {
+        return commentService.updateComment(commentId, comment);
+    }
+
 }

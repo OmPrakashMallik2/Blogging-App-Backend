@@ -9,8 +9,15 @@ import java.util.List;
 @Service
 public interface UserService {
     public List<UserEntity> getAllUser();
+
     public UserEntity createUser(UserEntity user);
+
     public UserEntity getUserById(Integer userId) throws Exception;
+
     public Boolean followUser(Integer userId1, Integer userId2) throws Exception;
+
+    public Boolean deleteUser(Integer userId) throws Exception;
+
+    public UserEntity updateUser(Integer userId, UserEntity user) throws Exception;
 
 }

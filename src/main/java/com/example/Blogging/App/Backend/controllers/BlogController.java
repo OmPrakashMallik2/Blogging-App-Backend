@@ -37,4 +37,14 @@ public class BlogController {
     public Boolean likeBlog(@PathVariable Integer blogId, @PathVariable Integer userId) throws Exception {
         return blogService.likeBlog(blogId, userId);
     }
+
+    @PutMapping("/{blogId}/{userId}")
+    public BlogEntity updateBlog(@PathVariable Integer blogId, @PathVariable Integer userId, @RequestBody BlogEntity blog) throws Exception {
+        return blogService.updateBlog(blogId, userId, blog);
+    }
+
+    @DeleteMapping("/{blogId}/{userId}")
+    public Boolean deleteBlog(@PathVariable Integer blogId, @PathVariable Integer userId) throws Exception {
+        return blogService.deleteBlog(blogId, userId);
+    }
 }
